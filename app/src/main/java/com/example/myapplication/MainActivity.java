@@ -1,11 +1,9 @@
 package com.example.myapplication;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.myapplication.model.RestRickAndMortyResponse;
 import com.example.myapplication.model.RickAndMortyCharacter;
