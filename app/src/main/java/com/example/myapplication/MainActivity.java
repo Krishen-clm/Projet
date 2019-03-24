@@ -1,12 +1,24 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
-import java.util.ArrayList;
+import com.example.myapplication.model.RestRickAndMortyResponse;
+import com.example.myapplication.model.RickAndMortyCharacter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends Activity {
     private RecyclerView recyclerView;
@@ -22,15 +34,37 @@ public class MainActivity extends Activity {
         // improve performance if you know that changes
         // in content do not change the layout size
         // of the RecyclerView
+
+        Gson gson = new GsonBuilder().setLenient().create();
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://rickandmortyapi.com/api/").addConverterFactory(GsonConverterFactory.create(gson)).build();
+
+        final RestRickAndMortyApi restRickAndMortyApi = retrofit.create(RestRickAndMortyApi.class);
+
+        Call<RestRickAndMortyResponse> call = restRickAndMortyApi.getListCharacters();
+        call.enqueue(new Callback<RestRickAndMortyResponse>() {
+            @Override
+            public void onResponse(Call<RestRickAndMortyResponse> call, Response<RestRickAndMortyResponse> response) {
+                RestRickAndMortyResponse restRickAndMortyResponse = response.body();
+                List<RickAndMortyCharacter> listRickAndMortyCharacter = restRickAndMortyResponse.getResults();
+                showCharacters(listRickAndMortyCharacter);
+            }
+
+            @Override
+            public void onFailure(Call<RestRickAndMortyResponse> call, Throwable t) {
+            }
+        });
+
+    }
+
+    private void showCharacters(List<RickAndMortyCharacter> list) {
         recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }// define an adapter
-        mAdapter = new MyAdapter(input);
+        mAdapter = new MyAdapter(list,this);
         recyclerView.setAdapter(mAdapter);
     }
+
+
 }
+
