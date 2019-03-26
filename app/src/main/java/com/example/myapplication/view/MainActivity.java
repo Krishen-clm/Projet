@@ -1,10 +1,13 @@
-package com.example.myapplication;
+package com.example.myapplication.view;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.myapplication.controller.MyAdapter;
+import com.example.myapplication.R;
+import com.example.myapplication.RestRickAndMortyApi;
 import com.example.myapplication.model.RestRickAndMortyResponse;
 import com.example.myapplication.model.RickAndMortyCharacter;
 import com.google.gson.Gson;

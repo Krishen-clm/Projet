@@ -1,6 +1,5 @@
-package com.example.myapplication;
+package com.example.myapplication.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -14,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.R;
 import com.example.myapplication.model.RickAndMortyCharacter;
+import com.example.myapplication.view.RickAndMortyCharacterActivity;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<RickAndMortyCharacter> values;
