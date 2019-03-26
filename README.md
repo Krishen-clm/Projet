@@ -43,7 +43,7 @@ L'application comporte deux écrans, la première est une liste complète des pe
 - Affiche les différentes informations sur le personnage :
   Types, nom
 
-<img src="Projet/item description.jpg" alt="détail personnages"> <img src="img_readme/detail_pokemon_2.png" alt="détail personnage"> 
+![item description](https://user-images.githubusercontent.com/47815807/55037750-08998d80-501f-11e9-81f4-9c8c5020ba89.jpg)
 
 
 
