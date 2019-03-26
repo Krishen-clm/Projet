@@ -34,14 +34,14 @@ L'application comporte deux écrans, la première est une liste complète des pe
 
 - Affiche la liste des personnages de Rick and Morty
 
-<img src="img_readme/liste_pokemon.png" alt="liste personnages">   <img src="img_readme/recherche.png" alt="recherche">
+<img src="Projet/home screen.jpg" alt="liste personnages">   <img src="img_readme/recherche.png" alt="recherche">
 
 ### Ecran du détail du personnage
 
 - Affiche les différentes informations sur le personnage :
   Types, nom
 
-<img src="img_readme/detail_pokemon.png" alt="détail personnages"> <img src="img_readme/detail_pokemon_2.png" alt="détail personnage"> 
+<img src="Projet/item description.jpg" alt="détail personnages"> <img src="img_readme/detail_pokemon_2.png" alt="détail personnage"> 
 
 
 
