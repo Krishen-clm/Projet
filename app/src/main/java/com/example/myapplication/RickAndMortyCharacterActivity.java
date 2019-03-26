@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,13 +20,14 @@ public class RickAndMortyCharacterActivity extends AppCompatActivity {
     private void getTheIntent(){
         String characterName = getIntent().getStringExtra("character_description");
         String image = getIntent().getStringExtra("image");
+        setCharacterName(characterName, image);
     }
 
     private void setCharacterName(String characterName, String image) {
         TextView name = findViewById(R.id.character_nom);
         name.setText("Nom du personnage : " + characterName);
-        ImageView imageView = findViewById(R.id.Image);
+        Log.d("AZERT", "URL : "+ image);
+        ImageView imageView = findViewById(R.id.image_char);
         Glide.with(this).load(image).into(imageView);
-
     }
 }
