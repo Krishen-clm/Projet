@@ -17,9 +17,10 @@ L'application comporte deux écrans, la première est une liste complète des pe
 
 - Affichage d'une liste dans un RecyclerView
 - Affichage du détail d'un item de la liste
+
 - Fonctions supplémentaires :
   - Architecture MVC et APK de l'application
-	- Ecran d'introduction (SplashActivity)
+  - Ecran d'introduction (SplashActivity)
   - Initiation à Gitflow (branche feature)
 
 ## Fonctionnalités: 
@@ -34,7 +35,7 @@ L'application comporte deux écrans, la première est une liste complète des pe
 
 - Affiche la liste des personnages de Rick and Morty
 
-<img src="Projet/home screen.jpg" alt="liste personnages">   <img src="img_readme/recherche.png" alt="recherche">
+<img src="Projet/home screen.jpg" alt="liste personnages">   
 
 ### Ecran du détail du personnage
 
