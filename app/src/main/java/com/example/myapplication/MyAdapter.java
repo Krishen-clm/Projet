@@ -83,7 +83,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, RickAndMortyCharacterActivity.class);
-                intent.putExtra("character_description",name);
+                intent.putExtra("character_nom",name);
+                intent.putExtra("character_espece",species);
                 intent.putExtra("image",image);
                 context.startActivity(intent);
 
