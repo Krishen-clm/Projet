@@ -36,7 +36,7 @@ L'application comporte deux écrans, la première est une liste complète des pe
 
 - Affiche la liste des personnages de Rick and Morty
 
-<img src="Projet/home screen.jpg" alt="liste personnages">   
+![home screen](https://user-images.githubusercontent.com/47815807/55037626-a80a5080-501e-11e9-92e8-872739ba8696.jpg)
 
 ### Ecran du détail du personnage
 
