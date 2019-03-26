@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.model.RickAndMortyCharacter;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -26,12 +28,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView txtHeader;
         public TextView txtFooter;
         public View layout;
+        public ImageView im;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            im = v.findViewById(R.id.icon);
         }
     }
 
@@ -73,6 +77,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.txtHeader.setText(name);
         final String species = rickAndMortyCharacter.getSpecies();
         holder.txtFooter.setText(species);
+        final String image = rickAndMortyCharacter.getImage();
+        Glide.with(context).load(image).into(holder.im);
         holder.txtHeader.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

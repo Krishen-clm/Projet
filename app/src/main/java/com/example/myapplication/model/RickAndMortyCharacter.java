@@ -56,4 +56,5 @@ public class RickAndMortyCharacter {
     public void setImage(String image) {
         this.image = image;
     }
+
 }
