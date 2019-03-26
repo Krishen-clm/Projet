@@ -29,7 +29,8 @@ L'application comporte deux écrans, la première est une liste complète des pe
 
 - Splash affichant Rick et Morty
 
-<img src= "Projet/SplashActivity.jpg" alt="splash">
+![SplashActivity](https://user-images.githubusercontent.com/47815807/55037372-d8052400-501d-11e9-8661-4acffdd44431.jpg)
+
 
 ### Ecran Home 
 
