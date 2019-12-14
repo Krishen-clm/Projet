@@ -1,14 +1,17 @@
 package com.example.myapplication.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,10 +20,47 @@ import com.example.myapplication.R;
 import com.example.myapplication.model.RickAndMortyCharacter;
 import com.example.myapplication.view.RickAndMortyCharacterActivity;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements Filterable {
     private List<RickAndMortyCharacter> values;
+    private List<RickAndMortyCharacter> fullValues;
     private Context context;
 
+    @Override
+    public Filter getFilter() {
+        return Filter;
+    }
+
+    private Filter Filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<RickAndMortyCharacter> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(fullValues);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (RickAndMortyCharacter rmc : fullValues){
+                    if (rmc.getName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(rmc);
+                    }
+                }
+
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            values.clear();
+            values.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -52,7 +92,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(List<RickAndMortyCharacter> myDataset, Context myContext) {
-        values = myDataset;
+        fullValues = new ArrayList<RickAndMortyCharacter>(myDataset);
+        this.values = myDataset;
         context = myContext;
     }
 
