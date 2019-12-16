@@ -50,9 +50,22 @@ L'application comporte deux écrans, la première est une liste complète des pe
 ![item description](https://user-images.githubusercontent.com/47815807/55037750-08998d80-501f-11e9-81f4-9c8c5020ba89.jpg)
 
 
+### Fragment Home
+<img src="home.PNG" alt="home">
 
 
+### Fragment Human
+Affiche la liste de tous les personnage Human.
+<img src="human.PNG" alt="human">
+
+
+### Fragment Alien
+Affiche la liste de tous les personnage Alien.
 <img src="alien.PNG" alt="alien">
+
+
+
+
 
 
 
