@@ -57,4 +57,20 @@ public class RickAndMortyCharacter {
         this.image = image;
     }
 
+    public boolean isAlien () {
+        if (this.species.equals("Alien")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isHuman () {
+        if (this.species.equals("Human")){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

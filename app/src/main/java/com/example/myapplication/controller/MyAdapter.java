@@ -121,7 +121,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
         holder.txtFooter.setText(species);
         final String image = rickAndMortyCharacter.getImage();
         Glide.with(context).load(image).into(holder.im);
-        holder.txtHeader.setOnClickListener(new OnClickListener() {
+        holder.itemView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, RickAndMortyCharacterActivity.class);
