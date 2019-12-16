@@ -14,14 +14,18 @@ L'application comporte deux écrans, la première est une liste complète des pe
 
 
 ## Consignes respectées : 
-
+- Deux écrans 
 - Affichage d'une liste dans un RecyclerView
 - Affichage du détail d'un item de la liste
+- Architecture MVC de l'application
+- Utilisation de Gitflow (branche feature)
+- Implémentation des fragments via Bottom Navigation
 
 - Fonctions supplémentaires :
-  - Architecture MVC et APK de l'application
+  
   - Ecran d'introduction (SplashActivity)
-  - Initiation à Gitflow (branche feature)
+  - Barre de recherche (SearchView & Toolbar)
+  - Ajout de l'APK
 
 ## Fonctionnalités: 
 
