@@ -1,15 +1,15 @@
 package com.example.myapplication.view;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,10 +18,10 @@ import com.example.myapplication.R;
 import com.example.myapplication.RestRickAndMortyApi;
 import com.example.myapplication.model.RestRickAndMortyResponse;
 import com.example.myapplication.model.RickAndMortyCharacter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         // use this setting to
         // improve performance if you know that changes
         // in content do not change the layout size
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://rickandmortyapi.com/api/").addConverterFactory(GsonConverterFactory.create(gson)).build();
 
         final RestRickAndMortyApi restRickAndMortyApi = retrofit.create(RestRickAndMortyApi.class);
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new HumanFragment()).commit();
 
         Call<RestRickAndMortyResponse> call = restRickAndMortyApi.getListCharacters();
         call.enqueue(new Callback<RestRickAndMortyResponse>() {
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<RestRickAndMortyResponse> call, Response<RestRickAndMortyResponse> response) {
                 RestRickAndMortyResponse restRickAndMortyResponse = response.body();
                 listRickAndMortyCharacter = restRickAndMortyResponse.getResults();
-                showCharacters(listRickAndMortyCharacter);
             }
 
             @Override
@@ -66,40 +65,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new HomeFragment()).commit();
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_search, menu);
-        MenuItem searchItem = menu.findItem(R.id.menuSearch);
-        SearchView searchView = (SearchView) searchItem.getActionView();
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            Fragment selectedFragment = null;
 
-        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            switch(menuItem.getItemId()){
+                case R.id.nav_home:
+                    selectedFragment = new HomeFragment();
+                    break;
+                case R.id.nav_human:
+                    selectedFragment = new HumanFragment();
+                    break;
+                case R.id.nav_alien:
+                    selectedFragment = new AlienFragment();
+                    break;
             }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                mAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
-    }
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    selectedFragment).commit();
 
-    private void showCharacters(List<RickAndMortyCharacter> list) {
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new MyAdapter(list,this);
-        recyclerView.setAdapter(mAdapter);
-    }
-
+            return true;
+        }
+    };
 
 }
 
