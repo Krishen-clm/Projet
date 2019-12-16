@@ -19,7 +19,7 @@ L'application comporte deux écrans, la première est une liste complète des pe
 - Affichage du détail d'un item de la liste
 - Architecture MVC de l'application
 - Utilisation de Gitflow (branche feature)
-- Implémentation des fragments via Bottom Navigation
+- Implémentation des fragments via Bottom Navigation (3 fragments : Home, Alien et Human)
 
 - Fonctions supplémentaires :
   
@@ -51,21 +51,24 @@ L'application comporte deux écrans, la première est une liste complète des pe
 
 
 ### Barre de recherche
+Recherche d'un élément dans la liste en fonction de son nom et de l'entrée utilisateur dans la barre de recherche.
 <img src="barrederecherche.PNG" alt="barrederecherche">
 
 
+### Fragment Alien
+Affiche la liste de tous les personnages Alien.
+<img src="alien.PNG" alt="alien">
+
+
 ### Fragment Home
-<img src="acceuil.PNG" alt="acceuil">
+Affiche la liste de tous les personnages.
 
 
 ### Fragment Human
-Affiche la liste de tous les personnage Human.
-<img src="human.PNG" alt="human">
+Affiche la liste de tous les personnages Human.
 
 
-### Fragment Alien
-Affiche la liste de tous les personnage Alien.
-<img src="alien.PNG" alt="alien">
+
 
 
 
