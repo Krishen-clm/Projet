@@ -52,5 +52,7 @@ L'application comporte deux écrans, la première est une liste complète des pe
 
 
 
+<img src="alien.jpg" alt="alien">
+
 
 
